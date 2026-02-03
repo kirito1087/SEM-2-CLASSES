@@ -1,4 +1,4 @@
-// const cart = ["shirt", "trousers", "shoes", "shades"];
+ const cart = ["shirt", "trousers", "shoes", "shades"];
 
 // const promise = createOrder(cart); //async function -- will get orderID
 
