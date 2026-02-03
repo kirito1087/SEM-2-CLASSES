@@ -2,13 +2,13 @@ let abcd = document.querySelector("#input");
 let btn = document.querySelector("#butto");
 let iconImg = document.querySelector(".weather-status .icon img");
 
-// High-quality SVG weather icons (Iconoir)
+// Icon URLs (royalty-free PNGs)
 const ICONS = {
-    sun: "https://raw.githubusercontent.com/iconoir-icons/iconoir/main/svg/sun-light.svg",
-    moon: "https://raw.githubusercontent.com/iconoir-icons/iconoir/main/svg/moon-stars.svg",
-    cloud: "https://raw.githubusercontent.com/iconoir-icons/iconoir/main/svg/cloud.svg",
-    rain: "https://raw.githubusercontent.com/iconoir-icons/iconoir/main/svg/cloud-rain.svg",
-    snow: "https://raw.githubusercontent.com/iconoir-icons/iconoir/main/svg/cloud-snow.svg"
+    sun: "https://cdn.jsdelivr.net/gh/erikflowers/weather-icons/svg/wi-day-sunny.svg",
+    moon: "https://cdn.jsdelivr.net/gh/erikflowers/weather-icons/svg/wi-night-clear.svg",
+    cloud: "https://cdn.jsdelivr.net/gh/erikflowers/weather-icons/svg/wi-cloudy.svg",
+    rain: "https://cdn.jsdelivr.net/gh/erikflowers/weather-icons/svg/wi-rain.svg",
+    snow: "https://cdn.jsdelivr.net/gh/erikflowers/weather-icons/svg/wi-snow.svg"
 };
 
 function pickIcon(temp, hour, conditionText) {
