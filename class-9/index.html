@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="left-section">
+        <h1>EVENT FLOW PLAYGROUND</h1>
+        <h4>DEMOSTRATING CAPTURING, BUILDING & PROPAGATION CONTROL</h4>
+        <div id="box">
+          Granparent
+          <div id="box-2">
+            parent
+            <button id="btn">Click me</button>
+          </div>
+        </div>
+      </div>
+      <div class="right-section">
+        <h3>Event Log</h3>
+        <button id="clear-log">Clear Log</button>
+        <div id="event-log"></div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

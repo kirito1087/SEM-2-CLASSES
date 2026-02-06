@@ -1,4 +1,5 @@
-/* ===== ANIME WEATHER APP THEME ===== */
+/* ===== 💖 WEEB OTAKU ANIME WEATHER APP THEME 💖 ===== */
+/* A true isekai for weather forecasting */
 
 :root {
     /* Vibrant anime neon palette */
@@ -9,6 +10,8 @@
     --neon-green: #05ffa1;
     --dark-bg: #0a0014;
     --darker-bg: #1a0033;
+    --sakura-pink: #ffe4e1;
+    --moe-blush: #ffb6c6;
     
     /* Layout */
     --max-width: 1100px;
@@ -18,6 +21,7 @@
     /* Fonts */
     --font-main: 'Orbitron', 'Roboto', 'Segoe UI', sans-serif;
     --font-bold: 'Orbitron', 'Impact', sans-serif;
+    --font-jp: 'Noto Sans JP', 'M+ 1p', sans-serif;
 }
 
 /* ===== RESET & BASE ===== */
@@ -44,6 +48,51 @@ body {
     min-height: 100vh;
     position: relative;
     overflow-x: hidden;
+}
+
+/* 🌸 Sakura Petal Animation 🌸 */
+@keyframes sakuraFall {
+    0% {
+        transform: translateY(-10vh) translateX(0) rotate(0deg);
+        opacity: 1;
+    }
+    70% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) translateX(100px) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+body::before,
+body::after {
+    content: '';
+    position: fixed;
+    top: -10%;
+    width: 100%;
+    height: 120%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+body::before {
+    background-image: 
+        radial-gradient(circle, var(--sakura-pink) 2px, transparent 2px),
+        radial-gradient(circle, var(--moe-blush) 1.5px, transparent 1.5px),
+        radial-gradient(circle, var(--neon-pink) 1px, transparent 1px);
+    background-size: 200px 200px, 150px 150px, 100px 100px;
+    background-position: 0 0, 40px 60px, 130px 270px;
+    animation: sakuraFall 20s linear infinite;
+}
+
+body::after {
+    background-image: 
+        radial-gradient(circle, var(--moe-blush) 1.5px, transparent 1.5px),
+        radial-gradient(circle, var(--sakura-pink) 1px, transparent 1px);
+    background-size: 180px 180px, 120px 120px;
+    background-position: 50px 100px, 130px 80px;
+    animation: sakuraFall 25s linear infinite 5s;
 }
 
 /* Animated background shift */
@@ -102,6 +151,25 @@ header {
     z-index: 10;
 }
 
+/* Manga-style border effect */
+header::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -12px;
+    height: 12px;
+    background: repeating-linear-gradient(
+        90deg,
+        var(--neon-pink) 0px,
+        var(--neon-pink) 10px,
+        transparent 10px,
+        transparent 20px
+    );
+    opacity: 0.8;
+    z-index: -1;
+}
+
 header::after {
     content: '';
     position: absolute;
@@ -137,12 +205,42 @@ header::after {
     letter-spacing: 0.15em;
     text-shadow: 0 0 12px var(--neon-pink), 0 0 24px var(--neon-cyan), 0 2px 4px rgba(0, 0, 0, 0.8);
     text-transform: uppercase;
-    animation: glow 2s ease-in-out infinite;
+    animation: glow 2s ease-in-out infinite, kawaii-bounce 2s ease-in-out infinite;
+    position: relative;
+}
+
+.brand h1::before {
+    content: '⛅';
+    margin-right: 0.5rem;
+    display: inline-block;
+    animation: spin 3s linear infinite;
+}
+
+.brand h1::after {
+    content: '✨';
+    margin-left: 0.5rem;
+    display: inline-block;
+    animation: sparkle 1.5s ease-in-out infinite;
 }
 
 @keyframes glow {
     0%, 100% { text-shadow: 0 0 12px var(--neon-pink), 0 0 24px var(--neon-cyan); }
     50% { text-shadow: 0 0 24px var(--neon-pink), 0 0 48px var(--neon-cyan); }
+}
+
+@keyframes kawaii-bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes sparkle {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.2); }
 }
 
 /* ===== MAIN CONTENT ===== */
@@ -152,6 +250,88 @@ main {
     align-items: center;
     justify-content: center;
     padding: 3rem var(--container-padding);
+    position: relative;
+}
+
+/* 💬 WEATHER BUBBLE 💬 */
+.waifu-bubble {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(135deg, var(--neon-pink) 0%, var(--neon-purple) 100%);
+    border: 3px solid var(--neon-cyan);
+    border-radius: 18px;
+    padding: 1.2rem;
+    min-width: 160px;
+    max-width: 350px;
+    width: auto;
+    color: #ffffff;
+    font-family: var(--font-main);
+    font-weight: 700;
+    text-align: center;
+    box-shadow: 0 0 30px rgba(255, 0, 110, 0.6), 0 0 15px rgba(0, 245, 255, 0.3);
+    z-index: 99;
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    pointer-events: auto;
+    word-wrap: break-word;
+    word-break: break-word;
+    white-space: normal;
+    overflow: hidden;
+    height: auto;
+    cursor: pointer;
+}
+
+.waifu-bubble:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 0 40px rgba(255, 0, 110, 0.8), 0 0 20px rgba(0, 245, 255, 0.5);
+}
+
+.waifu-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    right: 25px;
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-top: 15px solid var(--neon-cyan);
+    filter: drop-shadow(0 2px 4px rgba(255, 0, 110, 0.3));
+}
+
+.waifu-bubble.active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    animation: bubblePulse 0.5s ease-out;
+}
+
+.waifu-bubble-text {
+    animation: textBlink 2s ease-in-out infinite;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    letter-spacing: 0.5px;
+    color: #ffffff;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes textBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.85; }
+}
+
+@keyframes bubblePulse {
+    0% { 
+        transform: translateY(20px) scale(0.8);
+        opacity: 0;
+    }
+    50% {
+        transform: translateY(-5px) scale(1.05);
+    }
+    100% { 
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
 }
 
 /* ===== INPUT CONTAINER ===== */
@@ -193,35 +373,84 @@ main {
 .btn {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1.5rem;
-    background: linear-gradient(135deg, var(--neon-pink) 0%, var(--neon-purple) 100%);
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 1rem 2.5rem;
+    background: linear-gradient(135deg, var(--neon-pink) 0%, var(--neon-purple) 50%, var(--neon-pink) 100%);
+    background-size: 200% 200%;
     color: white;
-    border: 2px solid var(--neon-cyan);
-    border-radius: 8px;
-    font-family: var(--font-main);
-    font-weight: 700;
-    font-size: 1rem;
+    border: 3px solid var(--neon-cyan);
+    border-radius: 15px;
+    font-family: var(--font-bold);
+    font-weight: 900;
+    font-size: 1.15rem;
     cursor: pointer;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 20px rgba(255, 0, 110, 0.4), 0 0 10px rgba(0, 245, 255, 0.2);
+    letter-spacing: 0.15em;
+    transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 
+        0 0 30px rgba(255, 0, 110, 0.6),
+        0 0 15px rgba(0, 245, 255, 0.4),
+        inset 0 0 12px rgba(255, 255, 255, 0.15),
+        0 8px 20px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    min-width: 140px;
+}
+
+.btn::before {
+    content: '✨';
+    margin-right: 0.5rem;
+    display: inline-block;
+    animation: sparkle 0.6s ease-in-out infinite;
+    font-size: 1.3rem;
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+@keyframes sparkle {
+    0%, 100% { transform: scale(1) rotate(0deg) brightness(1); opacity: 1; }
+    50% { transform: scale(1.3) rotate(25deg) brightness(1.2); opacity: 0.9; }
 }
 
 .btn:hover {
-    box-shadow: 0 0 32px rgba(255, 0, 110, 0.6), 0 0 16px rgba(0, 245, 255, 0.4), 0 8px 16px rgba(0, 0, 0, 0.3);
-    transform: translateY(-2px);
+    box-shadow: 
+        0 0 50px rgba(255, 0, 110, 0.9),
+        0 0 35px rgba(0, 245, 255, 0.7),
+        inset 0 0 20px rgba(255, 255, 255, 0.25),
+        0 12px 30px rgba(0, 0, 0, 0.5);
+    transform: translateY(-5px) scale(1.08);
+    background-position: 100% 100%;
+    border-color: var(--neon-yellow);
+    border-width: 3px;
+}
+
+.btn:hover::after {
+    left: 100%;
 }
 
 .btn:active {
-    transform: translateY(0);
-    box-shadow: 0 0 16px rgba(255, 0, 110, 0.4), 0 0 8px rgba(0, 245, 255, 0.2);
+    transform: translateY(-2px) scale(0.97);
+    box-shadow: 
+        0 0 35px rgba(255, 0, 110, 0.7),
+        0 0 20px rgba(0, 245, 255, 0.5),
+        inset 0 0 15px rgba(0, 0, 0, 0.2);
 }
 
 .btn:disabled {
-    opacity: 0.6;
+    opacity: 0.5;
     cursor: not-allowed;
+    transform: none;
 }
 
 /* ===== WEATHER CARD ===== */
@@ -241,10 +470,57 @@ main {
     display: grid;
     gap: 2rem;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
 }
 
+/* 🐱 Neko ears on the card 🐱 */
 .weather-card::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 30%;
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 0px solid transparent;
+    border-bottom: 30px solid var(--neon-pink);
+    filter: drop-shadow(0 0 8px rgba(255, 0, 110, 0.6));
+    animation: neko-wiggle 2s ease-in-out infinite;
+}
+
+.weather-card::after {
+    content: '';
+    position: absolute;
+    top: -20px;
+    right: 30%;
+    width: 0;
+    height: 0;
+    border-left: 0px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 30px solid var(--neon-pink);
+    filter: drop-shadow(0 0 8px rgba(255, 0, 110, 0.6));
+    animation: neko-wiggle-reverse 2s ease-in-out infinite;
+}
+
+@keyframes neko-wiggle {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-5deg); }
+    75% { transform: rotate(5deg); }
+}
+
+@keyframes neko-wiggle-reverse {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(5deg); }
+    75% { transform: rotate(-5deg); }
+}
+
+/* Inner card glow */
+.weather-card > * {
+    position: relative;
+    z-index: 1;
+}
+
+.weather-card-glow {
     content: '';
     position: absolute;
     inset: 0;
@@ -377,7 +653,7 @@ main {
     50% { transform: translateY(-12px); }
 }
 
-/* ===== LOCATION DATA ===== */
+/* ===== LOCATION DATA (with moe blush!) ===== */
 .location-data {
     grid-column: 2 / 3;
     display: flex;
@@ -387,6 +663,43 @@ main {
     background: rgba(255, 190, 11, 0.05);
     border-left: 3px solid var(--neon-cyan);
     border-radius: 12px;
+    position: relative;
+}
+
+/* 🌸 Moe blush effect 🌸 */
+.location-data::before {
+    content: '';
+    position: absolute;
+    left: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 50px;
+    background: radial-gradient(ellipse at center, var(--moe-blush) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(12px);
+    opacity: 0.6;
+    animation: blush-pulse 3s ease-in-out infinite;
+}
+
+.location-data::after {
+    content: '';
+    position: absolute;
+    right: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 50px;
+    background: radial-gradient(ellipse at center, var(--moe-blush) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(12px);
+    opacity: 0.6;
+    animation: blush-pulse 3s ease-in-out infinite;
+}
+
+@keyframes blush-pulse {
+    0%, 100% { opacity: 0.4; transform: translateY(-50%) scale(0.9); }
+    50% { opacity: 0.8; transform: translateY(-50%) scale(1.1); }
 }
 
 .location {
@@ -396,12 +709,24 @@ main {
     color: var(--neon-pink);
     text-shadow: 0 0 12px var(--neon-pink);
     letter-spacing: 0.05em;
+    position: relative;
+    z-index: 1;
+}
+
+.location::before {
+    content: '💕 ';
+}
+
+.location::after {
+    content: ' 💕';
 }
 
 .time, .day, .date {
     color: var(--neon-cyan);
     font-size: 1rem;
     text-shadow: 0 0 8px var(--neon-cyan);
+    position: relative;
+    z-index: 1;
 }
 
 .time {
@@ -409,9 +734,21 @@ main {
     font-size: 1.1rem;
 }
 
+.time::before {
+    content: '🕐 ';
+}
+
 .day {
     text-transform: uppercase;
     letter-spacing: 0.08em;
+}
+
+.day::before {
+    content: '📅 ';
+}
+
+.date::before {
+    content: '🎌 ';
 }
 
 .meta-row {
